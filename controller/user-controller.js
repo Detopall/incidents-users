@@ -56,3 +56,8 @@ async function helperIsReporter(userId, incidentId){
 	const incident = await Incident.findById({"_id": incidentId});
 	return incident.reporterId === userId;
 }
+
+exports.getHelpedIncidents = async (req, res) => {
+	const allIncidentsWhereUserHelped = await Incident.find({"allies": {$elemMatch: {$eq: `${req.params.userId}`}}});
+	res.send({incidents: allIncidentsWhereUserHelped});
+}
