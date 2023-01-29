@@ -20,7 +20,7 @@ exports.getIncidents = async (req, res) => {
 }
 
 exports.endIncident = async (req, res) => {
-	const incidentId = req.params.id;
+	const incidentId = req.params.incidentId;
 	try {
 		const modifiedIncident = await Incident.updateOne({'_id': incidentId},
 		{$set :{'ended': true}});

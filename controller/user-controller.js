@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Incident = require("../models/Incident");
 const bcrypt = require('bcryptjs');
 
 exports.createUser = async (req, res) => {
@@ -26,3 +27,32 @@ async function validPassword(req){
 	return bcrypt.compareSync(req.body.password, user[0].password);
 }
 
+exports.helpIncident = async (req, res) => {
+	const userId = req.params.userId;
+	const incidentId = req.params.incidentId;
+	if (await helperIsAggressor(userId, incidentId) || await incidentIsEnded(incidentId) || await alreadyHelped(userId, incidentId) || await helperIsReporter(userId, incidentId)) return;
+	
+	const modifiedIncident = await Incident.updateOne(
+		{'_id': incidentId},
+		{$push: {allies: userId}});
+	res.send({data: modifiedIncident});
+}
+
+async function incidentIsEnded(incidentId) {
+	return await Incident.find({$and: [{"ended": true}, {"_id": incidentId}]}).length >= 1;
+}
+
+async function helperIsAggressor(userId, incidentId){
+	const incident = await Incident.findById({"_id": incidentId});
+	return incident.aggressors.includes(userId);
+}
+
+async function alreadyHelped(userId, incidentId){
+	const incident = await Incident.findById({"_id": incidentId});
+	return incident.allies.includes(userId);
+}
+
+async function helperIsReporter(userId, incidentId){
+	const incident = await Incident.findById({"_id": incidentId});
+	return incident.reporterId === userId;
+}
