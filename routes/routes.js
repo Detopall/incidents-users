@@ -5,6 +5,6 @@ const UserController = require("../controller/user-controller");
 
 //INCIDENT ROUTES
 router.post('/incidents/new', incidentController.createIncident);
-//router.get('/incidents', incidentController.getIncidents);
+router.get('/incidents', incidentController.getIncidents);
 
 module.exports = router;
