@@ -21,5 +21,6 @@ router.post('/users/register', userController.createUser);
 router.post('/users/login', userController.loginUser);
 router.put('/users/:userId/incidents/:incidentId/help', userController.helpIncident);
 router.get('/users/:userId/incidents/helped', userController.getHelpedIncidents);
+router.get('/users/:userId/incidents/reported', userController.getReportedIncidents);
 
 module.exports = router;

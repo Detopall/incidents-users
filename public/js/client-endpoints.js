@@ -2,8 +2,6 @@
 
 const URL = "http://localhost:3000";
 
-
-
 //INCIDENTS ENDPOINTS
 
 async function createIncident(body){
@@ -38,6 +36,10 @@ async function loginUser(body){
 
 async function helpIncident(userId, incidentId){
 	return postPut(`${URL}/users/${userId}/incidents/${incidentId}/help`, createOptions({}, 'POST'));
+}
+
+async function getAllReportedIncidents(userId){
+	return get(`${URL}/users/${userId}/incidents/reported`);
 }
 
 async function getAllHelpedIncidents(userId){
