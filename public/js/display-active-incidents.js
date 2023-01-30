@@ -2,7 +2,7 @@
 
 async function displayIncidents(){
 	let html = "";
-	const allIncidents = await getAllIncidents();
+	const allIncidents = await getAllIncidentsActive();
 	html = injectAllIncidentsInHTML(allIncidents, html);
 	document.querySelector(".active-incidents").insertAdjacentHTML("beforeend", html);
 }

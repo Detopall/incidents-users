@@ -12,8 +12,14 @@ exports.createIncident = async (req, res) => {
 
 exports.getIncidents = async (req, res) => {
 	try {
-		let incidents = await Incident.find().lean();
-		res.send({incidents: incidents});
+		if (Object.keys(req.query).length === 0){
+			let incidents = await Incident.find().lean();
+			res.send({incidents: incidents});
+		} else {
+			let incidents = await Incident.find({'ended': req.query.ended}).lean();
+			res.send({incidents: incidents});
+		}
+		
 	} catch (err){
 		console.error(err);
 	}

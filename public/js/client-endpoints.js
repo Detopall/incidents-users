@@ -14,6 +14,10 @@ async function getAllIncidents(){
 	return get(`${URL}/incidents`);
 }
 
+async function getAllIncidentsActive(){
+	return get(`${URL}/incidents?ended=false`);
+}
+
 async function endIncident(incidentId){
 	return postPut(`${URL}/incidents/${incidentId}/end`, createOptions({}, 'POST'));
 }
