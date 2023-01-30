@@ -17,7 +17,7 @@ exports.getIncidents = async (req, res) => {
 			res.send({incidents: incidents});
 		} else {
 			let incidents = await Incident.find({'ended': req.query.ended}).lean();
-			res.send({incidents: incidents});
+			res.send({incidents: incidents.reverse()});
 		}
 		
 	} catch (err){
