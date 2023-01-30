@@ -61,3 +61,15 @@ exports.getHelpedIncidents = async (req, res) => {
 	const allIncidentsWhereUserHelped = await Incident.find({"allies": {$elemMatch: {$eq: `${req.params.userId}`}}});
 	res.send({incidents: allIncidentsWhereUserHelped});
 }
+
+exports.getUser = async (req, res) => {
+	const user = await User.findById({"_id": req.params.userId}, {"password": 0});
+
+	console.log(user);
+	res.send({user: user});
+}
+
+exports.getUsers = async (req, res) => {
+	const users = await User.find({}, {"password": 0}).lean();
+	res.send({users: users});
+}

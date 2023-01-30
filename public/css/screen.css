@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+body {
+	background-color: darkgray;
+	height: 100vh;
+	margin: 17rem 5rem 0 5rem;
+	overflow: hidden;
+	font-family: 'Itim', cursive;
+	font-size: 1rem;
+}
+
+.container { 
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	gap: 50px 50px;
+	grid-auto-flow: row;
+	grid-template-areas:
+	  "routes report-btn user-info"
+	  "routes . ."
+	  "routes active-incidents active-incidents"
+	  "routes active-incidents active-incidents";
+}
+
+.routes {
+	grid-area: routes;
+	border: solid black 0.1rem;
+}
+
+.routes nav ul {
+	margin-bottom: 3rem;
+}
+
+.routes nav ul li {
+    height: 10rem;
+    display: flex;
+	text-align: center;
+    justify-content: center;
+	list-style-type: none;
+}
+
+.routes nav ul li a {
+	text-decoration: none;
+	margin-top: 50%;
+	margin-right: 25%;
+	font-size: 2rem;
+	color: black;
+}
+
+.routes nav ul li a:hover {
+	color: white;
+}
+
+.report-btn {
+	grid-area: report-btn;
+	border: solid black 0.1rem;
+}
+
+.report-btn button {
+	font-family: 'Itim', cursive;
+	font-size:  2.5rem;
+	cursor: pointer;
+	border: none;
+}
+
+.report-btn button:hover {
+	background-color: black;
+	color: white;
+}
+  
+.user-info {
+	grid-area: user-info;
+	border: solid black 0.1rem;
+}
+
+.active-incidents {
+	grid-area: active-incidents;
+	border: solid black 0.1rem;
+}
+  
