@@ -1,6 +1,7 @@
 "use strict";
 
 checkLocalStorage();
+displayIncidents();
 
 const incidentTypes = ["murder", "violence", "theft", "robbery", "burglary", "arson", "kidnapping", "rape", "assault", "bribery"];
 
@@ -30,16 +31,24 @@ async function reportIncident(e){
 }
 
 function getRandomIncidentType(){
-	const randomNumber = Math.floor(Math.random()*incidentTypes.length);
+	const randomNumber = Math.floor(Math.random() * incidentTypes.length);
 	return incidentTypes[randomNumber];
 }
 
 async function getRandomAggressors(reporterId){
 	const retrievedUsers = await getUsers();
-	console.log(retrievedUsers);
 	const usersWithoutReporter = retrievedUsers.users.filter(i => i._id !== reporterId);
-	const randomNumber = Math.floor(Math.random()*usersWithoutReporter.length);
-	return usersWithoutReporter[randomNumber];
+	const maxUsers = usersWithoutReporter.length;
+	const randomCount = Math.floor(Math.random() * maxUsers) + 1;
+	const randomUsers = [];
+
+	for (let i = 0; i < randomCount; i++) {
+		const randomIndex = Math.floor(Math.random() * maxUsers);
+		randomUsers.push(usersWithoutReporter[randomIndex]);
+		usersWithoutReporter.splice(randomIndex, 1);
+	}
+
+	return randomUsers;
 }
 
 

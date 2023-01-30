@@ -2,7 +2,8 @@
 
 body {
 	background-color: darkgray;
-	height: 100vh;
+	height: 500px;
+	width: 750px;
 	margin: 17rem 5rem 0 5rem;
 	overflow: hidden;
 	font-family: 'Itim', cursive;
@@ -76,5 +77,8 @@ body {
 .active-incidents {
 	grid-area: active-incidents;
 	border: solid black 0.1rem;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 15rem;
 }
   
