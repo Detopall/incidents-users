@@ -2,6 +2,7 @@
 
 bestBystanderInfo();
 
+
 async function bestBystanderInfo(){
 	const fetchedUsers = await getUsers();
 	const bystanders = [];

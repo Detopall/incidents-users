@@ -30,7 +30,7 @@ async function validPassword(req){
 exports.helpIncident = async (req, res) => {
 	const userId = req.params.userId;
 	const incidentId = req.params.incidentId;
-	if (await helperIsAggressor(userId, incidentId) || await incidentIsEnded(incidentId) || await alreadyHelped(userId, incidentId) || await helperIsReporter(userId, incidentId)) return;
+	if (await helperIsAggressor(userId, incidentId) || await incidentIsEnded(incidentId) || await alreadyHelped(userId, incidentId) || await helperIsReporter(userId, incidentId) || await checkIfRealUser(userId)) return;
 	
 	const modifiedIncident = await Incident.updateOne(
 		{'_id': incidentId},
@@ -44,7 +44,12 @@ async function incidentIsEnded(incidentId) {
 
 async function helperIsAggressor(userId, incidentId){
 	const incident = await Incident.findById({"_id": incidentId});
+	if (!incident) return true;
 	return incident.aggressors.includes(userId);
+}
+
+async function checkIfRealUser(userId){
+	return !await User.findById({"_id": userId});
 }
 
 async function alreadyHelped(userId, incidentId){
