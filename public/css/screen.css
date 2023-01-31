@@ -8,6 +8,8 @@ body {
 	overflow: hidden;
 	font-family: 'Itim', cursive;
 	font-size: 1rem;
+	display: flex;
+	align-items: center;
 }
 
 .container { 
