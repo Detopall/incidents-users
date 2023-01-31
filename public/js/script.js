@@ -16,8 +16,10 @@ function runOnPageLoad(){
 	if (window.location.pathname === "/") {
 		displayIncidents();
 		displayUserinfo();
-	  } else if (window.location.pathname === "/statistics") {
+	} else if (window.location.pathname === "/statistics") {
 		bestBystanderInfo();
 		mostFrequentTypeInfo();
-	  }
+	} else if (window.location.pathname === "/history"){
+		displayIncidentsHistory();
+	}
 }

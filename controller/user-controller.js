@@ -32,9 +32,11 @@ exports.helpIncident = async (req, res) => {
 	const incidentId = req.params.incidentId;
 	if (await helperIsAggressor(userId, incidentId) || await incidentIsEnded(incidentId) || await alreadyHelped(userId, incidentId) || await helperIsReporter(userId, incidentId) || await checkIfRealUser(userId)) return;
 	
+	const user = await User.findById({"_id": req.params.userId}, {"password": 0});
+
 	const modifiedIncident = await Incident.updateOne(
 		{'_id': incidentId},
-		{$push: {allies: userId}});
+		{$push: {allies: user}});
 	res.send({data: modifiedIncident});
 }
 

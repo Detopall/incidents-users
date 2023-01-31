@@ -8,6 +8,7 @@ const userController = require("../controller/user-controller");
 router.get('/', async (req, res) => {res.render('home')});
 router.get('/home', async (req, res) => {res.redirect('/')});
 router.get('/statistics', async (req, res) => {res.render('statistics')});
+router.get('/history', async (req, res) => {res.render('history')});
 
 
 //INCIDENT ROUTES

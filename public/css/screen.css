@@ -12,11 +12,15 @@ body {
 	align-items: center;
 }
 
+h3 {
+	text-decoration: underline;
+}
+
 .container { 
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr 1fr;
-	gap: 50px 50px;
+	gap: 30px 30px;
 	grid-auto-flow: row;
 	grid-template-areas:
 	  "routes report-btn user-info"
@@ -89,3 +93,17 @@ button:hover {
 .canvas-container {
 	display: flex;
 }
+
+.history-container {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#incidents-reported, #incidents-helped {
+	border: 0.1rem solid black;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 15rem;
+	width: 10rem;
+	padding: 0.7rem;
+} 

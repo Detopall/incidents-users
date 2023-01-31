@@ -29,3 +29,14 @@ function getAllAggressorsToDisplay(incident) {
 	});
 	return names;
 }
+
+function getAllAlliesToDisplay(incident) {
+	let names = "";
+	incident.allies.forEach((ally, index) => {
+	  names += ally.username;
+	  if (index < incident.allies.length - 1) {
+		names += ", ";
+	  }
+	});
+	return names;
+}
