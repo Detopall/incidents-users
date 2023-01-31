@@ -1,25 +1,10 @@
 "use strict";
+import { bestBystanderInfo, mostFrequentTypeInfo } from "./stats/display-charts.js";
 
-const domSelectorsWaitForLoad = [".user-info", ".active-incidents"];
-
-const incidentTypes = ["murder", "violence", "theft", "robbery", "burglary", "arson", "kidnapping", "rape", "assault", "bribery"];
-
-const handlers = {
-    '#report-incident': reportIncident,
-};
-
-checkRunOnLoad();
+runOnPageLoad();
 checkLocalStorage();
 
-document.addEventListener('click', (e) => {
-    for (const selector in handlers) {
-        if (e.target.matches(selector)) {
-            handlers[selector](e);
-            break;
-        }
-    }
-});
-
+document.addEventListener("click", reportIncident);
 
 async function checkLocalStorage(){
 	if (!localStorage.getItem("user")){
@@ -27,16 +12,12 @@ async function checkLocalStorage(){
 	}
 }
 
-function checkRunOnLoad(){
-	let amount = 0;
-	for (let i = 0; i < domSelectorsWaitForLoad.length; i++) {
-		if (document.querySelector(domSelectorsWaitForLoad[i])) {
-            amount++;
-        }
-	}
-
-	if (amount === domSelectorsWaitForLoad.length){
+function runOnPageLoad(){
+	if (window.location.pathname === "/") {
 		displayIncidents();
 		displayUserinfo();
-	}
+	  } else if (window.location.pathname === "/statistics") {
+		bestBystanderInfo();
+		mostFrequentTypeInfo();
+	  }
 }

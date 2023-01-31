@@ -1,6 +1,9 @@
 "use strict";
 
+const incidentTypes = ["murder", "violence", "theft", "robbery", "burglary", "arson", "kidnapping", "assault", "bribery"];
+
 async function reportIncident(e){
+	if (!e.target.matches("#report-incident")) return;
 	const user = JSON.parse(localStorage.getItem("user")).user;
 	const body = {
 		"reporterId": user._id,
