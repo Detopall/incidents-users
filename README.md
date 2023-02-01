@@ -30,11 +30,11 @@ After cloning the incidents-users project change your directory to the directory
 
 To start the **server**, run this command:
 ```
-npm run dev (for the development enviroment)
+npm run dev (for the development environment)
 
 OR
 
-npm run start (for the production enviroment)
+npm run start (for the production environment)
 ```
 
 After running the server, you can use the application.
@@ -44,8 +44,8 @@ After running the server, you can use the application.
 
 Authentication page:
 
-- You need to be logged in before you can access the functionallity of the other screens. You can register or login using one of the buttons.
-- If you are not logged in an error will be shown on the screen and the functionallity of the home page and history page will not work.
+- You need to be logged in before you can access the functionality of the other screens. You can register or login using one of the buttons.
+- If you are not logged in an error will be shown on the screen and the functionality of the home page and history page will not work.
 - Username and password field are required. The username must be unique.
 - Going to the authentication page after being logged in, will log you out.
 
@@ -57,7 +57,7 @@ Home page:
 - You will also see your username, the amount of incidents helped and incidents reported in the top right box.
 - The active incidents list contains all of the current active incidents together with a help button and a end button.
   - The help button is only visible when able to help (conditions stated in the helping box).
-  - The end button is only visible when able to stop (only when you are the repoter of that incident).
+  - The end button is only visible when able to stop an incident (only when you are the reporter of that incident).
 
 Statistics page:
 
@@ -69,7 +69,7 @@ Statistics page:
 
 History page:
 - History page contains two boxes of information:
-  - Incidents repoted. This displays all the incidents where you are the reporter.
+  - Incidents reported. This displays all the incidents where you are the reporter.
   - Incidents helped. This displays all the incidents where you have helped.
 
 ## Images
