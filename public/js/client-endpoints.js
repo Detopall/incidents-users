@@ -23,15 +23,13 @@ async function endIncident(incidentId){
 //USERS ENDPOINTS
 
 async function registerUser(body){
-	const user = postPut(`${URL}/users/register`, createOptions(body, 'POST'));
-	localStorage.setItem("user", user[0]);
-	return user;
+	const user = await postPut(`${URL}/users/register`, createOptions(body, 'POST'));
+	localStorage.setItem("user", JSON.stringify(user));
 }
 
 async function loginUser(body){
-	const user = postPut(`${URL}/users/login`, createOptions(body, 'POST'));
-	localStorage.setItem("user", user[0]);
-	return user;
+	const user = await postPut(`${URL}/users/login`, createOptions(body, 'POST'));
+	localStorage.setItem("user", JSON.stringify(user));
 }
 
 async function helpIncident(userId, incidentId){

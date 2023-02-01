@@ -1,6 +1,7 @@
 "use strict";
 
 async function displayIncidents(){
+	if (!userAuthenticated()) return;
 	let html = "";
 	const allIncidents = await getAllIncidentsActive();
 	html = injectAllIncidentsInHTML(allIncidents, html);

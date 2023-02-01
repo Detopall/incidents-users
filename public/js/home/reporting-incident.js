@@ -24,7 +24,7 @@ async function getRandomAggressors(reporterId){
 	const retrievedUsers = await getUsers();
 	const usersWithoutReporter = retrievedUsers.users.filter(i => i._id !== reporterId);
 	const maxUsers = usersWithoutReporter.length;
-	const randomCount = Math.floor(Math.random() * maxUsers + 1);
+	const randomCount = Math.floor(Math.random() * maxUsers);
 	const randomUsers = [];
 
 

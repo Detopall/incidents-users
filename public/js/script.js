@@ -2,16 +2,12 @@
 import { bestBystanderInfo, mostFrequentTypeInfo } from "./stats/display-charts.js";
 
 runOnPageLoad();
-checkLocalStorage();
 
 document.addEventListener("click", reportIncident);
 document.addEventListener("click", userHelpsIncident);
+document.addEventListener("click", registerUserClient);
+document.addEventListener("click", loginUserClient);
 
-async function checkLocalStorage(){
-	if (!localStorage.getItem("user")){
-		localStorage.setItem("user", JSON.stringify(await getUser("63d6e4d2daed6f5e371fee72")));
-	}
-}
 
 function runOnPageLoad(){
 	if (window.location.pathname === "/") {
@@ -22,5 +18,7 @@ function runOnPageLoad(){
 		mostFrequentTypeInfo();
 	} else if (window.location.pathname === "/history"){
 		displayIncidentsHistory();
+	} else if (window.location.pathname === "/auth"){
+		localStorage.removeItem("user");
 	}
 }

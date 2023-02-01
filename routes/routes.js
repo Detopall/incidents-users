@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {res.render('home')});
 router.get('/home', async (req, res) => {res.redirect('/')});
 router.get('/statistics', async (req, res) => {res.render('statistics')});
 router.get('/history', async (req, res) => {res.render('history')});
+router.get('/auth', async (req, res) => {res.render('auth')});
 
 
 //INCIDENT ROUTES

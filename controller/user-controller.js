@@ -6,7 +6,8 @@ exports.createUser = async (req, res) => {
 	if (await usernameAlreadyExists(req)) return;
 	const user = new User(req.body);
 	await user.save();
-	res.send({user: user});
+	const registeredUser = await User.findById({"_id": user._id}, {"password": 0});
+	res.send({user: registeredUser[0]});
 }
 
 async function usernameAlreadyExists(req){
@@ -19,7 +20,10 @@ exports.loginUser = async (req, res) => {
 	if (!await usernameAlreadyExists(req)) return;
 	if (!await validPassword(req)) return;
 	console.log(`${req.body.username} is logged in`);
-	res.send({loggedIn: req.body.username});
+
+	const loggedInUser = await User.find({"username": req.body.username}, {"password": 0});
+
+	res.send({user: loggedInUser[0]});
 }
 
 async function validPassword(req){

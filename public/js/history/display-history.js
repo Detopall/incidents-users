@@ -1,6 +1,8 @@
 "use strict";
 
 async function displayIncidentsHistory(){
+	if (!userAuthenticated()) return;
+	
 	const userId = JSON.parse(localStorage.getItem("user")).user._id;
 	
 	const fetchedReported = await getAllReportedIncidents(userId);

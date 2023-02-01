@@ -12,6 +12,12 @@ body {
 	align-items: center;
 }
 
+h2.non-auth {
+	color: red;
+	font-size: 1rem;
+	background-color: white;
+}
+
 h3 {
 	text-decoration: underline;
 }
@@ -118,4 +124,26 @@ button:hover {
 	height: 15rem;
 	width: 10rem;
 	padding: 0.7rem;
-} 
+	margin-right: 2rem;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: row wrap;
+	width: 10rem;
+}
+
+form input, form label, form button {
+	margin-top: 0.25rem;
+	margin-bottom: 0.25rem;
+}
+
+form button {
+	margin-right: 1rem;
+}
+
+.hidden {
+	display: none;
+}

@@ -1,6 +1,8 @@
 "use strict";
 
 async function displayUserinfo(){
+	if (!userAuthenticated()) return;
+
 	const user = JSON.parse(localStorage.getItem("user")).user;
 	const incidentsHelped = await getAllHelpedIncidents(user._id);
 	const incidentsReported = await getAllReportedIncidents(user._id);
