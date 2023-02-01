@@ -15,7 +15,7 @@ async function displayIncidentsHistory(){
 function displayIncidentsHistoryTemplate(fetchedIncidents, htmlLocation){
 	let html = "";
 	if (fetchedIncidents.incidents.length === 0){
-		html += "<h2> There are not incidents </h2>";
+		html += "<h2> There are no incidents</h2>";
 		htmlLocation.insertAdjacentHTML("beforeend", html);
 		return;
 	}

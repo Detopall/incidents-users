@@ -5,10 +5,11 @@ runOnPageLoad();
 checkLocalStorage();
 
 document.addEventListener("click", reportIncident);
+document.addEventListener("click", userHelpsIncident);
 
 async function checkLocalStorage(){
 	if (!localStorage.getItem("user")){
-		localStorage.setItem("user", JSON.stringify(await getUser("63d6db1f0bcd04e6507f1cea")));
+		localStorage.setItem("user", JSON.stringify(await getUser("63d6e4d2daed6f5e371fee72")));
 	}
 }
 

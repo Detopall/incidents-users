@@ -65,8 +65,23 @@ async function helperIsReporter(userId, incidentId){
 }
 
 exports.getHelpedIncidents = async (req, res) => {
-	const allIncidentsUserHelped = await Incident.find({"allies": {$elemMatch: {$eq: `${req.params.userId}`}}}).lean();
-	res.send({incidents: allIncidentsUserHelped});
+	const allIncidents = await Incident.find().lean();
+	const user = await User.findById({"_id": req.params.userId}, {"password": 0});
+	res.send({incidents: insertHelpedIncidents(allIncidents, user)});
+}
+
+function insertHelpedIncidents(allIncidents, user){
+	const allIncidentsUserHelped = [];
+	allIncidents.forEach(incident => {
+		const allyExists = incident.allies
+		.map(ally => ally.username)
+		.includes(user.username);
+
+		if (allyExists){
+			allIncidentsUserHelped.push(incident);
+		}
+	});
+	return allIncidentsUserHelped;
 }
 
 exports.getReportedIncidents = async (req, res) => {

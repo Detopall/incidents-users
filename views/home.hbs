@@ -1,6 +1,14 @@
 <div class="container">
 		{{> nav}}
-		{{> report-button}}
-		{{> user-info}}
-		{{> active-incidents}}
+		<div class="report-btn">
+			<button type="button" id="report-incident">Report Incident</button>
+		</div>
+		<div class="report-info">
+			<p> When <b>reporting</b> the AI will automatically scan your area and determine who is the aggressor and what type of incident it is. </p>
+		</div>
+		<div class="help-info">
+			<p> You can only <b>help</b> an incident as ally when: you are not the reporter, you are not the aggressor or when you've already helped. </p>
+		</div>
+		<div class="user-info"></div>
+		<div class="active-incidents"></div>
 </div>

@@ -24,7 +24,7 @@ h3 {
 	grid-auto-flow: row;
 	grid-template-areas:
 	  "routes report-btn user-info"
-	  "routes . ."
+	  "routes report-info help-info"
 	  "routes active-incidents active-incidents"
 	  "routes active-incidents active-incidents";
 }
@@ -33,7 +33,6 @@ h3 {
 	grid-area: routes;
 	border: solid black 0.1rem;
 }
-
 
 .routes nav ul li {
     height: 10rem;
@@ -60,6 +59,18 @@ h3 {
 	border: solid black 0.1rem;
 }
 
+.report-info {
+	grid-area: report-info;
+	border: solid black 0.1rem;
+	padding: 0.5rem;
+}
+
+.help-info {
+	grid-area: help-info;
+	border: solid black 0.1rem;
+	padding: 0.5rem;
+}
+
 button {
 	font-family: 'Itim', cursive;
 	cursor: pointer;
@@ -72,7 +83,8 @@ button:hover {
 }
 
 .report-btn button {
-	font-size:  3.2rem;
+	font-size: 2.5rem;
+	height: 100%;
 }
 
 .user-info {

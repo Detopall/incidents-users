@@ -35,7 +35,7 @@ async function loginUser(body){
 }
 
 async function helpIncident(userId, incidentId){
-	return postPut(`${URL}/users/${userId}/incidents/${incidentId}/help`, createOptions({}, 'POST'));
+	return postPut(`${URL}/users/${userId}/incidents/${incidentId}/help`, createOptions({}, 'PUT'));
 }
 
 async function getAllReportedIncidents(userId){
