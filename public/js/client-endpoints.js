@@ -16,9 +16,6 @@ async function getAllIncidentsActive(){
 	return get(`${URL}/incidents?ended=false`);
 }
 
-async function endIncident(incidentId){
-	return postPut(`${URL}/incidents/${incidentId}/end`, createOptions({}, 'POST'));
-}
 
 //USERS ENDPOINTS
 
@@ -34,6 +31,10 @@ async function loginUser(body){
 
 async function helpIncident(userId, incidentId){
 	return postPut(`${URL}/users/${userId}/incidents/${incidentId}/help`, createOptions({}, 'PUT'));
+}
+
+async function endIncident(userId, incidentId){
+	return postPut(`${URL}/users/${userId}/incidents/${incidentId}/end`, createOptions({}, 'PUT'));
 }
 
 async function getAllReportedIncidents(userId){

@@ -4,7 +4,7 @@ import { bestBystanderInfo, mostFrequentTypeInfo } from "./stats/display-charts.
 runOnPageLoad();
 
 document.addEventListener("click", reportIncident);
-document.addEventListener("click", userHelpsIncident);
+document.addEventListener("click", changeState);
 document.addEventListener("click", registerUserClient);
 document.addEventListener("click", loginUserClient);
 

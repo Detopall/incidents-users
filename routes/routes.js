@@ -15,7 +15,6 @@ router.get('/auth', async (req, res) => {res.render('auth')});
 //INCIDENT ROUTES
 router.post('/incidents/new', incidentController.createIncident);
 router.get('/incidents', incidentController.getIncidents);
-router.put('/incidents/:incidentId/end', incidentController.endIncident);
 
 
 //USERS ROUTES
@@ -24,6 +23,7 @@ router.get('/users/:userId', userController.getUser);
 router.post('/users/register', userController.createUser);
 router.post('/users/login', userController.loginUser);
 router.put('/users/:userId/incidents/:incidentId/help', userController.helpIncident);
+router.put('/users/:userId/incidents/:incidentId/end', userController.endIncident);
 router.get('/users/:userId/incidents/helped', userController.getHelpedIncidents);
 router.get('/users/:userId/incidents/reported', userController.getReportedIncidents);
 

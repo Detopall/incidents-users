@@ -34,7 +34,7 @@ async function validPassword(req){
 exports.helpIncident = async (req, res) => {
 	const userId = req.params.userId;
 	const incidentId = req.params.incidentId;
-	if (await helperIsAggressor(userId, incidentId) || await incidentIsEnded(incidentId) || await alreadyHelped(userId, incidentId) || await helperIsReporter(userId, incidentId) || await checkIfRealUser(userId)) return;
+	if (await helperIsAggressor(userId, incidentId) || await incidentIsEnded(incidentId) || await alreadyHelped(userId, incidentId) || await userIsReporter(userId, incidentId) || await checkIfRealUser(userId)) return;
 	
 	const user = await User.findById({"_id": req.params.userId}, {"password": 0});
 
@@ -63,10 +63,26 @@ async function alreadyHelped(userId, incidentId){
 	return incident.allies.includes(userId);
 }
 
-async function helperIsReporter(userId, incidentId){
+async function userIsReporter(userId, incidentId){
 	const incident = await Incident.findById({"_id": incidentId});
 	return incident.reporterId === userId;
 }
+
+exports.endIncident = async (req, res) => {
+	const incidentId = req.params.incidentId;
+	const userId = req.params.userId;
+
+	if (!userIsReporter(userId, incidentId)) return;
+
+	try {
+		const modifiedIncident = await Incident.updateOne({'_id': incidentId},
+		{$set :{'ended': true}});
+		res.send({data: modifiedIncident});
+	} catch (err) {
+		console.error(err);
+	}
+}
+
 
 exports.getHelpedIncidents = async (req, res) => {
 	const allIncidents = await Incident.find().lean();

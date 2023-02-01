@@ -16,9 +16,19 @@ function injectAllIncidentsInHTML(allIncidents, html){
 			<p> Type of incident: ${incident.typeOfIncident}</p>
 			<p> aggressors: ${getAllAggressorsToDisplay(incident)} </p>
 			${checkIfCanHelp(incident)}
+			${checkIfCanEnd(incident)}
 		</div>`;
 	});
 	return html;
+}
+
+function checkIfCanEnd(incident){
+	const userId = JSON.parse(localStorage.getItem("user")).user._id;
+	if (incident.reporterId === userId){
+		return `<button type="button" class="end-incident">End incident </button>`;
+	} else {
+		return "";
+	}
 }
 
 function checkIfCanHelp(incident){
