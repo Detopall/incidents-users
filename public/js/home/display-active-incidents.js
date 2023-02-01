@@ -26,7 +26,7 @@ function checkIfCanHelp(incident){
 	if (!incident.aggressors.includes(userId) && incident.reporterId !== userId && insertHelpedIncidents(incident, userId).length === 0){
 		return `<button type="button" class="help-incident">Help incident </button>`
 	} else {
-		return "<b> You have helped this incident :) </b>";
+		return "<b> You cannot help this incident </b>";
 	}
 }
 

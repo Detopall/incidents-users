@@ -11,8 +11,8 @@ async function reportIncident(e){
 		"aggressors": await getRandomAggressors(user._id),
 		"ended": false
 	}
-	console.log(body);
-	console.log(await createIncident(body));
+	await createIncident(body);
+	location.reload();
 }
 
 function getRandomIncidentType(){
@@ -29,7 +29,7 @@ async function getRandomAggressors(reporterId){
 
 
 	for (let i = 0; i < randomCount; i++) {
-		const randomIndex = Math.floor(Math.random() * maxUsers - 1);
+		const randomIndex = Math.floor(Math.random() * maxUsers);
 		randomUsers.push(usersWithoutReporter[randomIndex]);
 		usersWithoutReporter.splice(randomIndex, 1);
 	}
