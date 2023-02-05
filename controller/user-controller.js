@@ -7,7 +7,7 @@ exports.createUser = async (req, res) => {
 	const user = new User(req.body);
 	await user.save();
 	const registeredUser = await User.findById({"_id": user._id}, {"password": 0});
-	res.send({user: registeredUser[0]});
+	res.send({user: registeredUser});
 }
 
 async function usernameAlreadyExists(req){

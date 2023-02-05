@@ -9,6 +9,7 @@ async function displayIncidents(){
 }
 
 function injectAllIncidentsInHTML(allIncidents, html){
+	console.log(allIncidents);
 	allIncidents.incidents.forEach(incident => {
 		html += `
 		<div id="${incident._id}">

@@ -21,6 +21,7 @@ async function getAllIncidentsActive(){
 
 async function registerUser(body){
 	const user = await postPut(`${URL}/users/register`, createOptions(body, 'POST'));
+	console.log("endpoints user:", user);
 	localStorage.setItem("user", JSON.stringify(user));
 }
 

@@ -9,7 +9,7 @@ async function registerUserClient(e){
 
 async function loginUserClient(e){
 	if (!e.target.matches("#login")) return;
-
+	console.log(getBodyAuthenticate());
 	await loginUser(getBodyAuthenticate());
 	location.replace(`${URL}/home`);
 }
@@ -22,6 +22,7 @@ function getBodyAuthenticate(){
 }
 
 function userAuthenticated(){
+	if (window.location.pathname === "/auth") return;
 	const authError = document.querySelector("h2.non-auth");
 	if (localStorage.getItem("user")){
 		authError.classList.add("hidden");

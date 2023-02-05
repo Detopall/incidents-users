@@ -2,6 +2,9 @@
 
 
 async function changeState(e){
+	if (!userAuthenticated()) return;
+	if (!e.target.closest("div")) return;
+	
 	const userId = JSON.parse(localStorage.getItem("user")).user._id;
 	const incidentId = e.target.closest("div").getAttribute("id");
 
